@@ -4,5 +4,6 @@
  </head>
  <body>
  <?php echo '<p>Nuevo PHP</p>'; ?>
+ <?php echo '<h1>TKG</h1>'; ?>
  </body>
 </html>
