@@ -51,11 +51,13 @@ include("conexion.php");
 			<form class="form-inline" method="get">
 				<div class="form-group">
 					<select name="filter" class="form-control" onchange="form.submit()">
-						<option value="0">Filtros de datos de empleados</option>
-						<?php $filter = (isset($_GET['filter']) ? strtolower($_GET['filter']) : NULL);  ?>
-						<option value="1" <?php if($filter == 'Tetap'){ echo 'selected'; } ?>>Fijo</option>
-						<option value="2" <?php if($filter == 'Kontrak'){ echo 'selected'; } ?>>Contratado</option>
-                        <option value="3" <?php if($filter == 'Outsourcing'){ echo 'selected'; } ?>>Outsourcing</option>
+						<option value="">Filtros de datos de empleados</option>
+						<?php 
+							$filter = isset($_GET['filter']) ? strtolower($_GET['filter']) : NULL;  
+						?>
+						<option value="1" <?php if($filter == '1'){ echo 'selected'; } ?>>Fijo</option>
+						<option value="2" <?php if($filter == '2'){ echo 'selected'; } ?>>Contratado</option>
+                        <option value="3" <?php if($filter == '3'){ echo 'selected'; } ?>>Outsourcing</option>
 					</select>
 				</div>
 			</form>
@@ -107,7 +109,7 @@ include("conexion.php");
 							</td>
 							<td>
 
-								<a href="edit.php?nik='.$row['codigo'].'" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+								<a href="edit.php?nik='.$row['codigo'].'" title="Editar datos" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
 								<a href="index.php?aksi=delete&nik='.$row['codigo'].'" title="Eliminar" onclick="return confirm(\'Esta seguro de borrar los datos '.$row['nombres'].'?\')" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
 							</td>
 						</tr>
@@ -119,9 +121,10 @@ include("conexion.php");
 			</table>
 			</div>
 		</div>
-	</div><center>
-	<p>&copy; Sistemas Web <?php echo date("Y");?></p
-		</center>
+	</div>
+	
+	<p class="text-center">&copy; Sistemas Web <?php echo date("Y");?></p>
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 </body>
